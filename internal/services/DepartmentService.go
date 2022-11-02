@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"github.com/sanzharanarbay/golang_mongoDB_example/internal/models"
 	"github.com/sanzharanarbay/golang_mongoDB_example/internal/repositories"
 )
@@ -16,6 +17,10 @@ func NewDepartmentService(departmentRepository *repositories.DepartmentRepositor
 }
 
 func (d *DepartmentService) InsertDepartment(department *models.Department) (interface{}, error) {
+	check, _ := d.departmentRepository.CheckDepartmentExistence(department.Name, department.ShortName)
+	if check != nil{
+		return nil, errors.New("the Department already exists")
+	}
 	state, err := d.departmentRepository.SaveDepartment(department)
 	return state, err
 }

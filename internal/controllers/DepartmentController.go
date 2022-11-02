@@ -37,7 +37,7 @@ func (d *DepartmentController) CreateDepartment(c *gin.Context) {
 	}
 
 	created, err := d.departmentService.InsertDepartment(&request)
-
+	code := http.StatusCreated
 	response := map[string]interface{}{}
 
 	if err == nil {
@@ -45,9 +45,11 @@ func (d *DepartmentController) CreateDepartment(c *gin.Context) {
 		response["status"] = true
 		response["message"] = "The department saved successfully"
 		response["insertID"] = created
-
+	}else{
+		response["status"] = false
+		response["message"] = err.Error()
 	}
-	c.JSON(http.StatusCreated, response)
+	c.JSON(code, response)
 }
 
 func (d *DepartmentController) GetDepartment(c *gin.Context) {
@@ -59,9 +61,9 @@ func (d *DepartmentController) GetDepartment(c *gin.Context) {
 		log.Printf("ERROR - %s", err)
 		response := map[string]interface{}{
 			"status":  false,
-			"message": "The department not found",
+			"message": err.Error(),
 		}
-		c.JSON(http.StatusNotFound, response)
+		c.JSON(http.StatusUnprocessableEntity, response)
 		return
 	}
 	c.JSON(http.StatusOK, post)
@@ -74,7 +76,7 @@ func (d *DepartmentController) GetDepartmentsList(c *gin.Context) {
 			"status":  false,
 			"message": err.Error(),
 		}
-		c.JSON(http.StatusNotFound, response)
+		c.JSON(http.StatusUnprocessableEntity, response)
 		return
 	}
 	c.JSON(http.StatusOK, departmentsList)

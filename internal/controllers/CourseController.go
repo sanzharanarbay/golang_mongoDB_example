@@ -37,6 +37,7 @@ func (c *CourseController) CreateCourse(ctx *gin.Context) {
 	}
 
 	created, err := c.courseService.InsertCourse(&request)
+	code := http.StatusCreated
 
 	response := map[string]interface{}{}
 
@@ -45,9 +46,12 @@ func (c *CourseController) CreateCourse(ctx *gin.Context) {
 		response["status"] = true
 		response["message"] = "The course saved successfully"
 		response["insertID"] = created
-
+	}else{
+		response["status"] = false
+		response["message"] = err.Error()
+		code = http.StatusUnprocessableEntity
 	}
-	ctx.JSON(http.StatusCreated, response)
+	ctx.JSON(code, response)
 }
 
 func (c *CourseController) GetCourse(ctx *gin.Context) {
@@ -59,9 +63,9 @@ func (c *CourseController) GetCourse(ctx *gin.Context) {
 		log.Printf("ERROR - %s", err)
 		response := map[string]interface{}{
 			"status":  false,
-			"message": "The department not found",
+			"message": err.Error(),
 		}
-		ctx.JSON(http.StatusNotFound, response)
+		ctx.JSON(http.StatusUnprocessableEntity, response)
 		return
 	}
 	ctx.JSON(http.StatusOK, courseObj)
@@ -74,7 +78,7 @@ func (c *CourseController) GetCoursesList(ctx *gin.Context) {
 			"status":  false,
 			"message": err.Error(),
 		}
-		ctx.JSON(http.StatusNotFound, response)
+		ctx.JSON(http.StatusUnprocessableEntity, response)
 		return
 	}
 	ctx.JSON(http.StatusOK, coursesList)

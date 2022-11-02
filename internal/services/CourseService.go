@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"github.com/sanzharanarbay/golang_mongoDB_example/internal/models"
 	"github.com/sanzharanarbay/golang_mongoDB_example/internal/repositories"
 )
@@ -16,6 +17,10 @@ func NewCourseService(courseRepository *repositories.CourseRepository) *CourseSe
 }
 
 func (c *CourseService) InsertCourse(course *models.Course) (interface{}, error) {
+	check, _ := c.courseRepository.CheckCourseExistence(course.Title, course.Author)
+	if check != nil{
+		return nil, errors.New("the Course already exists")
+	}
 	state, err := c.courseRepository.SaveCourse(course)
 	return state, err
 }

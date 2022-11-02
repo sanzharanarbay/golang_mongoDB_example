@@ -26,13 +26,14 @@ type DepartmentRepositoryInterface interface {
 	GetAllDepartments() (*[]models.Department, error)
 	UpdateDepartment(department *models.Department, ID string) (interface{}, error)
 	DeleteDepartment(ID string) error
+	CheckDepartmentExistence(Name string, ShortName string) (*models.Department, error)
 }
 
 func (d *DepartmentRepository) SaveDepartment(department *models.Department) (interface{}, error) {
 	department.CreatedAt = time.Now()
 	result, err := d.MongoDB.DepartmentsCollection.InsertOne(d.MongoDB.Context, department)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	return result.InsertedID, nil
 }
@@ -114,4 +115,14 @@ func (d *DepartmentRepository) DeleteDepartment(ID string) error {
 	}
 
 	return nil
+}
+
+func (d *DepartmentRepository) CheckDepartmentExistence(Name string, ShortName string) (*models.Department, error){
+	var department models.Department
+	filter := bson.D{{"name", Name} , {"short_name", ShortName}}
+	err := d.MongoDB.DepartmentsCollection.FindOne(d.MongoDB.Context, filter).Decode(&department)
+	if err != nil {
+		return nil, err
+	}
+	return &department, nil
 }

@@ -26,13 +26,14 @@ type CourseRepositoryInterface interface {
 	GetAllCourses() (*[]models.Course, error)
 	UpdateCourse(course *models.Course, ID string) (interface{}, error)
 	DeleteCourse(ID string) error
+	CheckCourseExistence(Title string, Author string) (*models.Course, error)
 }
 
 func (c *CourseRepository) SaveCourse(course *models.Course) (interface{}, error) {
 	course.CreatedAt = time.Now()
 	result, err := c.MongoDB.CoursesCollection.InsertOne(c.MongoDB.Context, course)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 	return result.InsertedID, nil
 }
@@ -114,4 +115,14 @@ func (c *CourseRepository) DeleteCourse(ID string) error {
 	}
 
 	return nil
+}
+
+func (c *CourseRepository) CheckCourseExistence(Title string, Author string) (*models.Course, error){
+	var course models.Course
+	filter := bson.D{{"title", Title} , {"author", Author}}
+	err := c.MongoDB.CoursesCollection.FindOne(c.MongoDB.Context, filter).Decode(&course)
+	if err != nil {
+		return nil, err
+	}
+	return &course, nil
 }

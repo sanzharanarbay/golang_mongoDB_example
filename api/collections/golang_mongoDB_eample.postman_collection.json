@@ -1,0 +1,385 @@
+{
+	"info": {
+		"_postman_id": "66c4bc8c-7bd7-4df9-8f39-ad361a357638",
+		"name": "golang_mongoDB_eample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23889010"
+	},
+	"item": [
+		{
+			"name": "departments",
+			"item": [
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/departments/all",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"departments",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/departments/63627eb3465fc2e979d02590",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"departments",
+								"63627eb3465fc2e979d02590"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Travel\",\r\n    \"short_name\":\"Travel\",\r\n    \"total\":{\r\n        \"employees\":25,\r\n        \"gpx\":2\r\n    },\r\n    \"is_active\":true,\r\n    \"order\":3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/departments/create",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"departments",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Pay\",\r\n    \"short_name\":\"Pay\",\r\n    \"total\":{\r\n        \"employees\":20,\r\n        \"gpx\":3\r\n    },\r\n    \"is_active\":true,\r\n    \"order\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/departments/update/635d5b5eed85e65fa47ed32e",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"departments",
+								"update",
+								"635d5b5eed85e65fa47ed32e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/departments/delete/63627f0f465fc2e979d02591",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"departments",
+								"delete",
+								"63627f0f465fc2e979d02591"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "courses",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/courses/63627dca465fc2e979d0258d",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"63627dca465fc2e979d0258d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/courses/all",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Php\",\r\n    \"hours\":200,\r\n    \"author\":\"Sanzhar Anarbay\",\r\n    \"price\":200.89,\r\n    \"order\":1,\r\n    \"is_active\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/courses/create",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Php\",\r\n    \"hours\":200,\r\n    \"author\":\"Sanzhar Anarbay\",\r\n    \"price\":200.89,\r\n    \"order\":2,\r\n    \"is_active\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/courses/update/63627dca465fc2e979d0258d",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"update",
+								"63627dca465fc2e979d0258d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/courses/delete/63627e69465fc2e979d0258f",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"delete",
+								"63627e69465fc2e979d0258f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employees",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/employees/6362832bf37ef53b8b8b8138",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"6362832bf37ef53b8b8b8138"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/employees/all",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tab_num\":58145,\r\n    \"first_name\":\"Ivan\",\r\n    \"last_name\":\"Anarbayeva\",\r\n    \"age\":23,\r\n    \"department_id\":\"635d5554e45e10bac93fb276\",\r\n    \"address\":{\r\n        \"country\":\"Kazakhstan\",\r\n        \"city\":\"Almaty\",\r\n        \"region\":\"Almaty\",\r\n        \"street\":\"Abay, street\",\r\n        \"house\":\"26a\",\r\n        \"floor\":\"1\"\r\n    },\r\n    \"courses\":[\r\n        \"635d5b71ed85e65fa47ed32f\",\r\n        \"63627dca465fc2e979d0258d\",\r\n        \"63627dec465fc2e979d0258e\"\r\n    ],\r\n    \"is_active\":true,\r\n    \"is_gpx\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/employees/create",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tab_num\":58145,\r\n    \"first_name\":\"Ivan\",\r\n    \"last_name\":\"Anarbayeva\",\r\n    \"age\":23,\r\n    \"department_id\":\"635d5554e45e10bac93fb276\",\r\n    \"address\":{\r\n        \"country\":\"Kazakhstan\",\r\n        \"city\":\"Almaty\",\r\n        \"region\":\"Almaty\",\r\n        \"street\":\"Abay, street\",\r\n        \"house\":\"26a\",\r\n        \"floor\":\"2\"\r\n    },\r\n    \"courses\":[\r\n        \"635d5b71ed85e65fa47ed32f\",\r\n        \"63627dca465fc2e979d0258d\",\r\n        \"63627dec465fc2e979d0258e\"\r\n    ],\r\n    \"is_active\":true,\r\n    \"is_gpx\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/employees/update/6362832bf37ef53b8b8b8138",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"update",
+								"6362832bf37ef53b8b8b8138"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{APP_URL}}/api/v1/employees/delete/6362832bf37ef53b8b8b8138",
+							"host": [
+								"{{APP_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"employees",
+								"delete",
+								"6362832bf37ef53b8b8b8138"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
